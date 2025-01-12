@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday</title>
+</head>
+<body>
+    <section>
+        <h1>Birthday</h1>
+        <form class='form' action="{% url 'Home:Home' %}" method="post"
+        enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form}}
+            <button class="form-submit" type="submit">Submit</button>
+        </form>
+    </section>
+</body>
+</html>
