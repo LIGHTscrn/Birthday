@@ -1,0 +1,85 @@
+
+body {
+    background: linear-gradient(to right, #ffafbd, #ffc3a0);
+    min-height: 100vh;
+}
+
+.container {
+    margin-top: 2rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+}
+
+nav a {
+    color: #555;
+}
+
+nav a:hover {
+    color: #ff6f61;
+}
+
+.form-section, .list-section {
+    margin-bottom: 2rem;
+}
+
+table thead {
+    background: #ff6f61;
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background: #ffe6e6;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #555;
+}
+
+footer a:hover {
+    color: #ff6f61;
+}
+input[type="text"], input[type="email"], input[type="number"], select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #ff6f61;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 111, 97, 0.7);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
