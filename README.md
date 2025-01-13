@@ -26,7 +26,7 @@ Birthday Tracker
 
 4. **Start the application**:
     ```bash
-    python app.py
+    python3 manage.py runserver
     ```
 
 5. **Open your browser** and navigate to `http://localhost:5000` to see the app in action.
