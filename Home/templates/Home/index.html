@@ -1,19 +1,91 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday</title>
+    <title>Birthday Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 </head>
-<body>
-    <section>
-        <h1>Birthday</h1>
-        <form class='form' action="{% url 'Home:Home' %}" method="post"
-        enctype="multipart/form-data">
-            {% csrf_token %}
 
-            {{ form}}
-            <button class="form-submit" type="submit">Submit</button>
-        </form>
-    </section>
+<body>
+    <header>
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>Birthday Manager</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#form-section">Add Birthday</a></li>
+                <li><a href="#list-section">Birthday List</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Feedback Messages -->
+        <section>
+            {% if message %}
+            <p class="alert alert-primary">{{ message }}</p>
+            {% endif %}
+            {% if error %}
+            <p class="alert alert-danger">{{ error }}</p>
+            {% endif %}
+            {% if success %}
+            <p class="alert alert-success">{{ success }}</p>
+            {% endif %}
+        </section>
+
+        <!-- Birthday Form Section -->
+        <section id="form-section" class="grid">
+            <hgroup>
+                <h2>Add a Birthday</h2>
+                <h3>Fill in the details below to save a birthday.</h3>
+            </hgroup>
+            <form class="form" action="{% url 'Home:Home' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button class="button-primary" type="submit">Submit</button>
+            </form>
+        </section>
+
+        <!-- Birthday List Section -->
+        <section id="list-section" class="grid">
+            <hgroup>
+                <h2>Added Birthdays</h2>
+                <h3>Here are the birthdays you've saved so far.</h3>
+            </hgroup>
+            {% if birthdays %}
+            <table role="grid">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>day</th>
+                        <th>month</th>
+                        <th>year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for birthday in birthdays %}
+                    <tr>
+                        <td>{{ birthday.name }}</td>
+                        <td>{{ birthday.day }}</td>
+                        <td>{{ birthday.month }}</td>
+                        <td>{{ birthday.year }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No birthdays added yet. Start by adding one!</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="container">
+        <small>
+            <a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a>
+        </small>
+    </footer>
 </body>
+
 </html>
