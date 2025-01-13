@@ -6,6 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Manager</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3e6ff, #ffe6e6);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header, footer {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul:first-child {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background: #f8f9fa;
+        }
+
+        table th, table td {
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        table tr:nth-child(even) {
+            background: #f3f3f3;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-primary {
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+
+        .alert-danger {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .alert-success {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +92,7 @@
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container-fluid">
         <!-- Feedback Messages -->
         <section>
             {% if message %}
@@ -59,9 +130,9 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>day</th>
-                        <th>month</th>
-                        <th>year</th>
+                        <th>Day</th>
+                        <th>Month</th>
+                        <th>Year</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,12 +151,6 @@
             {% endif %}
         </section>
     </main>
-
-    <footer class="container">
-        <small>
-            <a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a>
-        </small>
-    </footer>
 </body>
 
 </html>
