@@ -4,7 +4,12 @@ Birthday Tracker
 
 1. **Clone the repository**:
     ```bash
-    git clone /home/pranav/Birthday
+    # Using HTTPS
+    git clone https://github.com/LIGHTscrn/Birthday.git
+
+    # Using SSH
+    git clone git@github.com:LIGHTscrn/Birthday.git
+
     cd Birthday
     ```
 
