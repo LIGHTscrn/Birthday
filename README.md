@@ -26,6 +26,9 @@ Birthday Tracker
 
 4. **Start the application**:
     ```bash
+    #windows
+    python manage.py runserver
+    #linux
     python3 manage.py runserver
     ```
 
