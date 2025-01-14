@@ -37,8 +37,8 @@
             <form action="{% url 'Home:Home' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="fullName" class="form-label">Full Name:</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Enter full name" class="form-control">
+                    <label for="name" class="form-label">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter full name" class="form-control">
                 </div>
                 <div class="row">
                     <div class="col-md-4 mb-3">

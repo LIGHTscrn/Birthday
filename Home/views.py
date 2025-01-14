@@ -28,9 +28,16 @@ def Home(request):
 
             if year < 1900 or year > datetime.now().year:
                 return render(request, 'Home/index.html' , {'form' : form, 'error' : 'Invalid Year', 'birthdays' : data})
-
+            print(name, day, month, year)
             person = models.Birthday(name=name, day=day, month=month, year=year)
-            person.save()
-        return render(request, 'Home/index.html' , {'form' : form , 'success' : "Successfully added Birthday", 'birthdays' : data })
-    form = forms.BirthdayForm()
-    return render(request, 'Home/index.html', {'form': form , 'message' : "Add Birthday" , 'birthdays' : data})
+            try:
+                person.save()
+                data = models.Birthday.objects.all()  # Update data after saving
+            except Exception as e:
+                print(f"Error saving: {e}")
+                return render(request, 'Home/index.html', {'form': form, 'error': f"Error saving: {e}", 'birthdays': data})
+
+            return render(request, 'Home/index.html', {'form': form, 'success': "Successfully added Birthday", 'birthdays': data})
+    else:
+        form = forms.BirthdayForm()
+    return render(request, 'Home/index.html', {'form': form, 'message': "Add Birthday", 'birthdays': data})
