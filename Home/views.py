@@ -7,6 +7,14 @@ from datetime import datetime
 
 def Home(request):
     data = models.Birthday.objects.all()
+
+    # Check for Birthday
+    today = datetime.now()
+    if models.Birthday.objects.filter(day=today.day, month=today.month).exists():
+        birthday_person = models.Birthday.objects.get(day=today.day, month=today.month)
+        birthday_name = birthday_person.name
+        return render(request, 'Home/index.html', {'birthdays': data, 'message':'Add Birthday','birthday_message': f'Happy Birthday, {birthday_name}!'})
+
     if request.method == 'POST':
         form = forms.BirthdayForm(request.POST)
         if form.is_valid():
