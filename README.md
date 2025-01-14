@@ -3,7 +3,7 @@ Birthday Tracker
 
 This project is deployed and accessible at the following link:
 
-[Live Demo](https://your-project.onrender.com)
+[Live Demo](https://birthday-cyn1.onrender.com/)
 
 ## How to Run the App
 
