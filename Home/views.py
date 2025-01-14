@@ -28,11 +28,15 @@ def Home(request):
 
             if year < 1900 or year > datetime.now().year:
                 return render(request, 'Home/index.html' , {'form' : form, 'error' : 'Invalid Year', 'birthdays' : data})
+
+            if models.Birthday.objects.filter(name=name, day=day, month=month, year=year).exists():
+                return render(request, 'Home/index.html', {'form': form, 'error': 'This birthday entry already exists', 'birthdays': data})
+
             print(name, day, month, year)
             person = models.Birthday(name=name, day=day, month=month, year=year)
             try:
                 person.save()
-                data = models.Birthday.objects.all()  # Update data after saving
+                data = models.Birthday.objects.all() 
             except Exception as e:
                 print(f"Error saving: {e}")
                 return render(request, 'Home/index.html', {'form': form, 'error': f"Error saving: {e}", 'birthdays': data})
