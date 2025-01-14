@@ -25,7 +25,7 @@ def addBirthday(request):
             if form.is_valid():
                 name = form.cleaned_data['name']
                 day = form.cleaned_data['day']
-
+                
                 if day < 1 or day > 31:
                     return render(request, 'Home/index.html' , {'form' : form, 'error' : 'Invalid Day', 'birthdays' : data})
 
@@ -42,6 +42,9 @@ def addBirthday(request):
                 if year < 1900 or year > datetime.now().year:
                     return render(request, 'Home/index.html' , {'form' : form, 'error' : 'Invalid Year', 'birthdays' : data})
 
+                if not name or not day or not year:
+                    return render(request, 'Home/index.html', {'form' : form, 'error' : 'Missing Fields', 'birthdays' : data})
+                
                 if models.Birthday.objects.filter(name=name, day=day, month=month, year=year).exists():
                     return render(request, 'Home/index.html', {'form': form, 'error': 'This birthday entry already exists', 'birthdays': data})
 
