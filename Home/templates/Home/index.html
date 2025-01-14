@@ -19,15 +19,13 @@
     <main class="container">
         <!-- Feedback Messages -->
         <div class="mb-4">
-            {% if message %}
-            <div class="alert alert-info">{{ message }}</div>
-            {% endif %}
-            {% if error %}
-            <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
-            {% if success %}
-            <div class="alert alert-success">{{ success }}</div>
-            {% endif %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         </div>
 
         <!-- Birthday Form Section -->
