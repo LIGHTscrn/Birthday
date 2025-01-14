@@ -1,5 +1,10 @@
 # Birthday
 Birthday Tracker
+
+This project is deployed and accessible at the following link:
+
+[Live Demo](https://your-project.onrender.com)
+
 ## How to Run the App
 
 1. **Clone the repository**:
