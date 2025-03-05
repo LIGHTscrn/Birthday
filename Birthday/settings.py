@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-77iagsvqhm)9==ro0rp_6jkpksrpgt35p(pq*#1%ujnr05rz-_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['birthday-cyn1.onrender.com','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['dpg-cv48cu52ng1s73df024g-a.oregon-postgres.render.com',"127.0.0.1"]
 
 
 # Application definition
@@ -77,20 +78,15 @@ WSGI_APPLICATION = 'Birthday.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'Your database name',
-    #     'USER': 'Your mysql username',
-    #     'PASSWORD': 'Your mysql password',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+database_url = os.getenv("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
+#postgresql://postgres_jqaq_user:TloGsFWbyGgfFY19V5fKet5AqISP9JDJ@dpg-cv48cu52ng1s73df024g-a.oregon-postgres.render.com/postgres_jqaq
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -126,12 +122,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'Home/static'),
-# ]
 
 # WhiteNoise Static Files Storage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
