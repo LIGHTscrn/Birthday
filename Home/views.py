@@ -7,7 +7,7 @@ from django.contrib import messages
 # Create your views here.
 
 def Home(request):
-    data = models.Birthday.objects.all()
+    data = models.Birthday.objects.all().order_by('name').values()
 
     # Check for Birthday
     today = datetime.now()
@@ -21,7 +21,6 @@ def Home(request):
         })
 
     form = forms.BirthdayForm()
-    print(data, 'This is data')
     return render(request, 'Home/index.html', {'form': form, 'message': "Add Birthday", 'birthdays': data})
 
 def addBirthday(request):
